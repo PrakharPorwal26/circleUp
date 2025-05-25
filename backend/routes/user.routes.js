@@ -1,21 +1,34 @@
 import express from 'express';
 import {
-  registerUser,
+  registerWithOtp,
+  verifyEmailOtp,
+  resendOtp,
   loginUser,
-  getUserProfile,
+  logoutUser,
+  refreshAccessToken,
   updateUserProfile,
-  logoutUser
+  changePassword,
+  changeEmail,
+  getUserProfile,
+  deleteUserAccount
 } from '../controllers/User.controllers.js';
 import { protect } from '../middlewares/auth.middlewares.js';
 
 const router = express.Router();
 
-router.post('/register', registerUser);
-router.post('/login', loginUser);
-router.post('/logout', logoutUser);
+// Public routes
+router.post('/send-otp',      registerWithOtp);
+router.post('/verify-otp',    verifyEmailOtp);
+router.post('/resend-otp',    resendOtp);
+router.post('/login',         loginUser);
+router.post('/logout',        logoutUser);
+router.post('/refresh-token', refreshAccessToken);
 
-//protected routes
-router.get('/me', protect, getUserProfile);
-router.patch('/me', protect, updateUserProfile);
+// Protected routes
+router.get('/me',              protect, getUserProfile);
+router.patch('/me',            protect, updateUserProfile);
+router.patch('/me/password',   protect, changePassword);
+router.patch('/me/email',      protect, changeEmail);
+router.delete('/me',           protect, deleteUserAccount);
 
 export default router;

@@ -5,7 +5,9 @@ import app from './app.js';
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI,{
+    dbName: process.env.DB_NAME
+  })
   .then(() => {
     console.log('MongoDB connected successfully');
     app.listen(process.env.PORT, () =>
