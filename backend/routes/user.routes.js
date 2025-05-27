@@ -10,9 +10,11 @@ import {
   changePassword,
   changeEmail,
   getUserProfile,
-  deleteUserAccount
+  deleteUserAccount,
+  uploadAvatar
 } from '../controllers/User.controllers.js';
 import { protect } from '../middlewares/auth.middlewares.js';
+import {upload} from '../middlewares/multer.middlewares.js'
 
 const router = express.Router();
 
@@ -30,5 +32,6 @@ router.patch('/me',            protect, updateUserProfile);
 router.patch('/me/password',   protect, changePassword);
 router.patch('/me/email',      protect, changeEmail);
 router.delete('/me',           protect, deleteUserAccount);
+router.patch('/me/avatar',      protect, upload.single('avatar'),uploadAvatar)
 
 export default router;
