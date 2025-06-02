@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import userRouter from './routes/user.routes.js';
 import interestRouter from './routes/interest.routes.js';
 import groupRouter from './routes/group.routes.js';
+import eventRouter from './routes/event.routes.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get('/api/v1/healthcheck', (req, res) =>
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/interests', interestRouter);
 app.use('/api/v1/groups', groupRouter); 
+app.use('/api/v1/events', eventRouter);
 
 
 export default app;
