@@ -1,3 +1,5 @@
+//TODO: Implement complete report model so that users can report other users or groups for inappropriate content or behavior
+
 import mongoose from 'mongoose';
 
 const reportSchema = new mongoose.Schema(
