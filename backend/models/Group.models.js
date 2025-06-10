@@ -67,5 +67,10 @@ const groupSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+groupSchema.index(
+  { name: 'text', description: 'text', tags: 'text' },
+  { name: 'TextSearchIndex' }
+);
+
 groupSchema.index({ location: '2dsphere' });
 export default mongoose.model('Group', groupSchema);
