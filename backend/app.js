@@ -7,6 +7,7 @@ import groupRouter from './routes/group.routes.js';
 import eventRouter from './routes/event.routes.js';
 import recommendRouter from './routes/recommend.routes.js';
 import chatRouter from './routes/chat.routes.js';
+import searchRouter from './routes/search.routes.js';
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use('/api/v1/groups', groupRouter);
 app.use('/api/v1/events', eventRouter);
 app.use('/api/v1/recommend', recommendRouter);
 app.use('/api/v1/chats', chatRouter);
+app.use('/api/v1/search', searchRouter);
 
 export default app;
